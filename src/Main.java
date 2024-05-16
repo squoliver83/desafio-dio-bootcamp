@@ -1,4 +1,6 @@
+import entities.Bootcamp;
 import entities.Curso;
+import entities.Dev;
 import entities.Mentoria;
 
 import java.time.LocalDate;
@@ -15,13 +17,46 @@ public class Main {
         curso2.setDescricao("descricao curso javascript");
         curso2.setCargaHoraria(4);
 
-        Mentoria mentoria1 = new Mentoria();
-        mentoria1.setTitulo("mentoria de java");
-        mentoria1.setDescricao("descricao mentoria java");
-        mentoria1.setData(LocalDate.now());
+        Mentoria mentoria = new Mentoria();
+        mentoria.setTitulo("mentoria de java");
+        mentoria.setDescricao("descricao mentoria java");
+        mentoria.setData(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria1);
+//        System.out.println(curso1);
+//        System.out.println(curso2);
+//        System.out.println(mentoria1);
+
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devSamuel = new Dev();
+        devSamuel.setNome("Samuel");
+        devSamuel.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos inscritos Samuel:" + devSamuel.getConteudosInscritos());
+        devSamuel.progredir();
+        devSamuel.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos inscritos Samuel:" + devSamuel.getConteudosInscritos());
+        System.out.println("Conteúdos concluídos Samuel:" + devSamuel.getConteudosConcluidos());
+        System.out.println("XP:" + devSamuel.calcularXpTotal());
+
+        System.out.println("---------");
+
+        Dev devFabiana = new Dev();
+        devFabiana.setNome("Fabiana");
+        devFabiana.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos inscritos Fabiana:" + devFabiana.getConteudosInscritos());
+        devFabiana.progredir();
+        devFabiana.progredir();
+        devFabiana.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos inscritos Fabiana:" + devFabiana.getConteudosInscritos());
+        System.out.println("Conteúdos concluídos Fabiana:" + devFabiana.getConteudosConcluidos());
+        System.out.println("XP:" + devFabiana.calcularXpTotal());
+
     }
 }
